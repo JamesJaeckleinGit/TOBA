@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>Success</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+<%@page contentType="text/html" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="/includes/header.html" />
+
         <h1>Success</h1>
         <p>Your account has been successfully created</p>
         
-        <span>${user.email}</span>
-        
-  
-
-
+        <label>First Name:</label>
+        <span>${user.firstName}</span><br>
         <label>Last Name:</label>
         <span>${user.lastName}</span><br>
         <label>Phone Number:</label>
@@ -33,17 +21,13 @@ and open the template in the editor.
         <span>${user.zipcode}</span><br>
         <label>Email:</label>
         <span>${user.email}</span><br><br>
-      
         <label>Your Username is:</label>
         <span>${user.userName}</span><br>
-        <label>Your Password is:</label>
-        <span>${user.password}</span><br>
-
-
-    </body>
-
-
-</html>
-
-
- 
+         <label>Your Password is:</label>
+        <span>${user.passWord}</span><br>
+        
+        
+        <a href="index.html">home</a>
+        
+        
+<c:import url="/includes/footer.jsp" />

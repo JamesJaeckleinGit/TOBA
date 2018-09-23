@@ -1,17 +1,7 @@
-<%-- 
-    Document   : newCustomer
-    Created on : Aug 28, 2018, 5:04:37 PM
-    Author     : james
---%>
+<%@page contentType="text/html" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="/includes/header.html" />
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to TOBA</title>
-    </head>
-    <body>
         <h1>Register for TOBA</h1>
         <p>To register please fill out the entire form below.</p>
         <p><i>${message}</i></p>
@@ -36,5 +26,5 @@
             <label>&nbsp;</label>
             <input type="submit" value="Join Now" class="margin_left">
         </form>
-    </body>
-</html>
+
+<c:import url="/includes/footer.jsp" />

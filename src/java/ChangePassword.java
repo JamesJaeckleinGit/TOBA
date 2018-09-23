@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author james
  */
-public class NewCustomerServlet extends HttpServlet {
+public class ChangePassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +35,10 @@ public class NewCustomerServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewCustomerServlet</title>");            
+            out.println("<title>Servlet ChangePassword</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet NewCustomerServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ChangePassword at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,72 +71,27 @@ public class NewCustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String url = "/newCustomer.jsp";
         
-        // get current action
+        String url = "/reset_password.jsp";
         String action = request.getParameter("action");
-        if (action == null) {
-            action = "join";  // default action
-        }
-
-        // perform action and set URL to appropriate page
-        if (action.equals("join")) {
-            url = "/newCustomer.jsp";    // the "join" page
-        } 
-        
-      
-        else if (action.equals("add")) {
-            // get parameters from the request
-            
+        if (action.equals("changePassword")){
             HttpSession session = request.getSession();
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            String city = request.getParameter("city");
-            String state = request.getParameter("state");
-            String zipcode = request.getParameter("zipcode");
-            String email = request.getParameter("email");
+            User user = (User) session.getAttribute("User");
             
-            String userName = lastName + zipcode;
-            String password = "welcome1";
-            
-            
-            User user = new User(userName, password, firstName, lastName, phone, address, city, state, zipcode, email);
-            
-            
-            // validate the parameters
-            String message;
-            if (firstName == null || lastName == null ||
-                phone == null || address == null || city == null ||
-                state == null || zipcode == null || email == null||
-                firstName.isEmpty() || lastName.isEmpty() || phone.isEmpty() ||
-                address.isEmpty() || city.isEmpty() || state.isEmpty() ||
-                zipcode.isEmpty() || email.isEmpty()
-                        )
-            {
-                message = "Please fill out all of the fields.";
-                url = "/newCustomer.jsp";
-            } 
-            else {
-                session.setAttribute("User", user);
-                request.setAttribute("user", user);
-                message = "";
-                url = "/success.jsp";
-             
-            }
-            request.setAttribute("message", message);
+            request.setAttribute("User", user);
+                
+                url = "accountActivity.jsp";
         }
+        
+        
+
+       
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
-    
-    
-    
-    
     }
 
-   
+    
     @Override
     public String getServletInfo() {
         return "Short description";

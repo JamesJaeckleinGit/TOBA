@@ -12,6 +12,10 @@
         <servlet-name>TransactionServlet</servlet-name>
         <servlet-class>TransactionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>ChangePassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginCheck</servlet-name>
         <url-pattern>/LoginCheck</url-pattern>
@@ -24,9 +28,7 @@
         <servlet-name>TransactionServlet</servlet-name>
         <url-pattern>/TransactionServlet</url-pattern>
     </servlet-mapping>
-    
-    <!-- Error Mapping --> 
-    
+    <!-- Error Mapping -->
     <error-page>
         <error-code>404</error-code>
         <location>/error_404.jsp</location>
@@ -35,7 +37,10 @@
         <exception-type>java.lang.Throwable</exception-type>
         <location>/error_java.jsp</location>
     </error-page>
-    
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/ChangePassword</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
